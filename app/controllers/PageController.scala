@@ -22,17 +22,38 @@ import models._
 import play.api.libs.json.Json
 import play.api.mvc._
 
+import scala.concurrent.Future
+
 @Singleton
 class PageController @Inject() extends Controller {
-  def index(group: String, page: String): Action[AnyContent] = Action {
+  def defaultPage(group: String): Action[AnyContent] = Action.async {
+    val defaultPage = "home"
+
+    val loadedGroup = Group(group)
+    val loadedTemplate = Template("template-name")
+    val loadedPage = Page(defaultPage, s"This is the $defaultPage page")
+    val loadedNavigation = List(Link(defaultPage, defaultPage, s"$defaultPage page"))
+
+    Future.successful(
+      Ok(
+        Json.toJson(
+          LoadedPage(loadedGroup, loadedTemplate, loadedPage, loadedNavigation)
+        )
+      )
+    )
+  }
+
+  def page(group: String, page: String): Action[AnyContent] = Action.async {
     val loadedGroup = Group(group)
     val loadedTemplate = Template("template-name")
     val loadedPage = Page(page, s"This is the $page page")
     val loadedNavigation = List(Link(page, page, s"$page page"))
 
-    Ok(
-      Json.toJson(
-        LoadedPage(loadedGroup, loadedTemplate, loadedPage, loadedNavigation)
+    Future.successful(
+      Ok(
+        Json.toJson(
+          LoadedPage(loadedGroup, loadedTemplate, loadedPage, loadedNavigation)
+        )
       )
     )
   }

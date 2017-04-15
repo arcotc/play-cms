@@ -16,4 +16,10 @@
 
 package models
 
+import play.api.libs.json.Json
+
 case class Template(name: String)
+
+object Template {
+  implicit val writes = Json.writes[Template]
+}

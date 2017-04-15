@@ -16,4 +16,10 @@
 
 package models
 
+import play.api.libs.json.Json
+
 case class Group(name: String)
+
+object Group {
+  implicit val writes = Json.writes[Group]
+}

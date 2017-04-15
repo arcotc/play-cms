@@ -16,4 +16,10 @@
 
 package models
 
+import play.api.libs.json.Json
+
 case class Link(text: String, page: String, altText: String)
+
+object Link {
+  implicit val writes = Json.writes[Link]
+}

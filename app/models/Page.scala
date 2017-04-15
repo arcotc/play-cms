@@ -16,4 +16,10 @@
 
 package models
 
+import play.api.libs.json.Json
+
 case class Page(name: String, content: String)
+
+object Page {
+  implicit val writes = Json.writes[Page]
+}
