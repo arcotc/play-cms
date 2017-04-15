@@ -48,3 +48,7 @@ For this request the server returns a JSON document of the following structure:
         ]
     }
 }
+
+# Building
+sbt scalastyle
+sbt compile
