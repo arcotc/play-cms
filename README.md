@@ -52,3 +52,10 @@ For this request the server returns a JSON document of the following structure:
 # Building
 sbt scalastyle
 sbt compile
+
+# CMS Codes
+The CMS allows substitution of certain pieces of information, below are a list of code that can be used
+in templates that will automatically be replaced with the data specified:
+
+{serverAssets}      A URL built from the protocol, server, port and groupName to enable assets from the CMS Server to be provided to the pressed pages.
+{groupTitle}        The groupTitle, aka the nice name of the group.

@@ -18,7 +18,7 @@ package models
 
 import play.api.libs.json.Json
 
-case class Group(name: String)
+case class Group(name: String, title: String)
 
 object Group {
   implicit val writes = Json.writes[Group]
