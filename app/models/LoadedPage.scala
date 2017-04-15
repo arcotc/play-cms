@@ -14,26 +14,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package controllers
+package models
 
-import javax.inject._
-
-import models._
-import play.api.libs.json.Json
-import play.api.mvc._
-
-@Singleton
-class PageController @Inject() extends Controller {
-  def index(group: String, page: String): Action[AnyContent] = Action {
-    val loadedGroup = Group(group)
-    val loadedTemplate = Template("template-name")
-    val loadedPage = Page(page, s"This is the $page page")
-    val loadedNavigation = List(Link(page, page, s"$page page"))
-
-    Ok(
-      Json.toJson(
-        LoadedPage(loadedGroup, loadedTemplate, loadedPage, loadedNavigation)
-      )
-    )
-  }
-}
+case class LoadedPage(group: Group, template: Template, page: Page, links: List[Link])
