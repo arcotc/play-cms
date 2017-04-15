@@ -18,7 +18,7 @@ package models
 
 import play.api.libs.json.Json
 
-case class Template(name: String)
+case class Template(name: String, headOption: Option[String], headerOption: Option[String], footerOption: Option[String])
 
 object Template {
   implicit val writes = Json.writes[Template]
