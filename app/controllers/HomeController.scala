@@ -34,7 +34,8 @@ class HomeController @Inject() extends Controller {
    * a path of `/`.
    */
   def index: Action[AnyContent] = Action {
-    Ok(views.html.index("Play CMS"))
+//    Ok(views.html.index("Play CMS"))
+    Ok(views.html.templates.template1.template1Home())
   }
 
 }
